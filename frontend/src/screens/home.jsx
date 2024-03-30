@@ -1,9 +1,9 @@
 import React from "react";
 // import { Link } from 'react-router-dom';
-import Hero from "./components/hero";
-import Section1 from "./components/section1";
-import Section2 from "./components/section2";
-import Section3 from "./components/section3";
+import Hero from "../pages/home/components/hero";
+import Section1 from "../pages/home/components/section1";
+import Section2 from "../pages/home/components/section2";
+import Section3 from "../pages/home/components/section3";
 
 const HomePage = () => {
   return (

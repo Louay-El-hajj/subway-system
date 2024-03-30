@@ -6,9 +6,9 @@ const Section3 = () => {
   return (
     <div>
       <div className="section3">
+          <h4>Buy Your Ticket</h4>
         <div className="section3-container1">
           <div className="section3-container1-1">
-            <h4>Buy Your Ticket</h4>
             <div className="container1-1-1">
               <div className="section3-from">
                 <img src="/imgs/location-icon.png" alt="" />
@@ -23,6 +23,7 @@ const Section3 = () => {
                 </select>
               </div>
             </div>
+              <hr className="line" />
           </div>
           <div className="section3-container1-2">
             <div className="section3-depart">
