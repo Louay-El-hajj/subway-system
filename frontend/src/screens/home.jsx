@@ -7,7 +7,7 @@ import Section3 from "../pages/home/components/section3";
 
 const HomePage = () => {
   return (
-    <div>
+    <div >
         <Hero/>
         <Section1/> 
         <Section2/>    

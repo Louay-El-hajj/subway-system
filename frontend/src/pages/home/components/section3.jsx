@@ -4,10 +4,10 @@ import "./section3.css";
 
 const Section3 = () => {
   return (
-    <div>
+    
       <div className="section3">
-          <h4>Buy Your Ticket</h4>
         <div className="section3-container1">
+          <h4>Buy Your Ticket</h4>
           <div className="section3-container1-1">
             <div className="container1-1-1">
               <div className="section3-from">
@@ -44,7 +44,7 @@ const Section3 = () => {
           <img src="/imgs/search-icon2.png" alt="" />
         </div>
       </div>
-    </div>
+    
   );
 };
 

@@ -14,6 +14,8 @@
     height: 80px;
     font-size: 20px;
     color: white;
+    margin-left: auto;
+    margin-right: auto;
 }
 .logo{
     width: 130px;
@@ -33,6 +35,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    list-style-type: none;
+    padding-right: 20px;
 }
 .hero-section1{
     color: white;
