@@ -1,11 +1,11 @@
 import React from "react";
 // import { Link } from 'react-router-dom';
-import Hero from "../components/landingScreen/components/hero";
-import Section1 from "../components/landingScreen/components/section1";
-import Section2 from "../components/landingScreen/components/section2";
-import Section3 from "../components/landingScreen/components/section3";
-import Section4 from "../components/landingScreen/components/section4";
-import Footer from "../components/landingScreen/components/footer";
+import Hero from "../components/landingScreen/hero";
+import Section1 from "../components/landingScreen/section1";
+import Section2 from "../components/landingScreen/section2";
+import Section3 from "../components/landingScreen/section3";
+import Section4 from "../components/landingScreen/section4";
+import Footer from "../components/landingScreen/footer";
 
 const LandingScreen = () => {
 
@@ -17,6 +17,7 @@ const LandingScreen = () => {
         <Section3/> 
         <Section4/>
         <Footer/>
+        
     </div>
   );
 };

@@ -1,11 +1,10 @@
 import React from "react";
 // import { Link } from 'react-router-dom';
-import "../../../styles/landingScreen/hero.css";
+import "../../styles/landingScreen/hero.css";
 
 const Hero = () => {
   return (
     <div className="hero-section">
-      {/* <img className="hero-img" backg src="/imgs/hero-img.png" alt="" /> */}
       <header className="header">
         <img className="logo" src="/imgs/logo.png" alt="" />
         <nav className="nav-home">
