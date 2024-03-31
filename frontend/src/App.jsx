@@ -1,11 +1,14 @@
-
 // import './App.css';
-import HomePage from './screens/home';
+import LandingScreen from "./screens/landingScreen";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    
-    <HomePage/>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<LandingScreen />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
