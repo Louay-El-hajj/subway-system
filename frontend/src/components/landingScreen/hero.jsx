@@ -1,5 +1,5 @@
 import React from "react";
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import "../../styles/landingScreen/hero.css";
 import "../../styles/commons/colors.css";
 import "../../styles/commons/utilities.css";
@@ -8,20 +8,22 @@ const Hero = () => {
   return (
     <div className="hero-section">
       <header className="header ">
+        <Link to="/">
         <img className="logo" src="/imgs/logo.png" alt="" />
+        </Link>
         <nav className="nav-home flex">
           <ul className="nav-container flex ">
             <li>
-              <p>Home</p>
+              <Link to="/">Home</Link>
             </li>
             <li>
-              <p>Book</p>
+              <a href="#section3">Book</a>
             </li>
             <li>
-              <p>Login</p>
+              <Link to="/login">Login</Link>
             </li>
             <li>
-              <p>Sign up</p>
+              <Link to="/signup">Sign up</Link>
             </li>
           </ul>
         </nav>

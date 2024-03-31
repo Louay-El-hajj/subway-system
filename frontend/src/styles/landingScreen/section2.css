@@ -9,9 +9,9 @@
     width:fit-content;
     height:fit-content;
     background-color: white;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); /* Add shadow effect */
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.5);/* Add shadow effect */
     /* margin-left: 20px; */
-    border-radius: 8px;
+    border-radius: 30px;
   }
   .section2-title{
     margin-left: 0;
