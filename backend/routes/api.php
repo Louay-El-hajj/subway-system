@@ -13,46 +13,40 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+Route::post('/login', 'AuthController@login');
+Route::post('/register', 'AuthController@register');
+Route::post('/logout', 'AuthController@logout')->middleware('auth.jwt');
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-// Route::post('create_station', [StationController::class, 'create_station']);
-// Route::post('update_station', [StationController::class, 'update_station']);
-// Route::post('display_station', [StationController::class, 'display_station']);
-// Route::post('delete_station', [StationController::class, 'delete_station']);
 
-Route::controller(StationController::class)->group(function () {
-    Route::get('get_station', "get_station");
-    Route::post('create_station', 'create_station');
-    Route::post('delete_station', 'delete_station');
-    Route::post('update_station', 'update_station');
-});
+Route::get('/users', 'UserController@index')->middleware('auth.jwt');
+Route::get('/users/{id}', 'UserController@show')->middleware('auth.jwt');
+Route::put('/users/{id}', 'UserController@update')->middleware('auth.jwt');
+Route::delete('/users/{id}', 'UserController@destroy')->middleware('auth.jwt');
 
-Route::controller(UserController::class)->group((function () {
-    Route::get('get_user', 'get_user');
-    Route::post('edit_user', 'edit_user');
-    Route::post('upload_pic', 'upload_pic');
-}));
 
-Route::prefix('admin/')->group((function () {
-    Route::controller(AdminAuthController::class)->group((function () {
-        Route::post('login', 'login');
-        Route::post('logout', 'logout');
-        Route::post('refresh', 'refresh');
-    }));
-    Route::controller(AdminController::class)->group((function () {
-        Route::get('get_driver_registration_requests', 'getDriverRegisterRequests');
-        Route::get('get_all_drivers', 'getAllDrivers');
-        Route::get('get_all_passengers', 'getAllPassengers');
-        Route::post('approve', 'approve');
-        Route::post('deny', 'deny');
-        Route::post('get_user', 'get_user');
-        Route::post('edit_driver', 'edit_driver');
-        Route::post('delete_user', 'delete_user');
-        Route::post('get_user_orders', 'get_user_orders');
-        Route::post('edit_user', 'edit_user');
-        Route::post('driver_analytics', 'driver_analytics');
-        Route::post('passenger_analytics', 'passenger_analytics');
-    }));
-}));
+Route::get('/stations', 'StationController@index')->middleware('auth.jwt');
+Route::get('/stations/{id}', 'StationController@show')->middleware('auth.jwt');
+Route::post('/stations', 'StationController@store')->middleware('auth.jwt');
+Route::put('/stations/{id}', 'StationController@update')->middleware('auth.jwt');
+Route::delete('/stations/{id}', 'StationController@destroy')->middleware('auth.jwt');
+
+
+Route::get('/tickets', 'TicketController@index')->middleware('auth.jwt');
+Route::get('/tickets/{id}', 'TicketController@show')->middleware('auth.jwt');
+Route::post('/tickets', 'TicketController@store')->middleware('auth.jwt');
+Route::put('/tickets/{id}', 'TicketController@update')->middleware('auth.jwt');
+Route::delete('/tickets/{id}', 'TicketController@destroy')->middleware('auth.jwt');
+
+
+Route::get('/reviews', 'ReviewController@index')->middleware('auth.jwt');
+Route::get('/reviews/{id}', 'ReviewController@show')->middleware('auth.jwt');
+Route::post('/reviews', 'ReviewController@store')->middleware('auth.jwt');
+Route::put('/reviews/{id}', 'ReviewController@update')->middleware('auth.jwt');
+Route::delete('/reviews/{id}', 'ReviewController@destroy')->middleware('auth.jwt');
+
+
+Route::get('/coin-requests', 'CoinRequestController@index')->middleware('auth.jwt');
+Route::get('/coin-requests/{id}', 'CoinRequestController@show')->middleware('auth.jwt');
+Route::post('/coin-requests', 'CoinRequestController@store')->middleware('auth.jwt');
+Route::put('/coin-requests/{id}', 'CoinRequestController@update')->middleware('auth.jwt');
+Route::delete('/coin-requests/{id}', 'CoinRequestController@destroy')->middleware('auth.jwt');
