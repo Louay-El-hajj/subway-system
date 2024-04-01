@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('stations', function (Blueprint $table) {
             $table->id();
-            $table->string('station_name');
-            $table->string('station_location');
+            $table->string('station_name')->unique();
+            $table->string('station_location')->unique();
             $table->enum('service_status', array('available', 'not-available'));
             $table->string('station_img');
             $table->timestamps();
