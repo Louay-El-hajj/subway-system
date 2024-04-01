@@ -4,7 +4,7 @@ import "../../styles/landingScreen/section2.css";
 
 const Section2 = () => {
   return (
-    <div className="section2">
+    <div id="section2" className="section2">
       <div className="section2-title">
         <h3>Hot Destinations</h3>
       </div>
