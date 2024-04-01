@@ -1,11 +1,11 @@
 import React from "react";
 import "../styles/fab.css";
 
-const FAB = () => {
+const FAB = ({fabLabelRef}) => {
   return (
     <div className="fab-wrapper">
       <input id="fabCheckbox" type="checkbox" className="fab-checkbox" />
-      <label className="fab" htmlFor="fabCheckbox">
+      <label ref={fabLabelRef} className="fab" htmlFor="fabCheckbox">
         <span className="fab-dots fab-dots-1"></span>
         <span className="fab-dots fab-dots-2"></span>
         <span className="fab-dots fab-dots-3"></span>

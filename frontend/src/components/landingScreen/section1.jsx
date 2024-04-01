@@ -1,14 +1,11 @@
-import React, {useEffect, useState} from "react";
-// import RequestCoins from "../../pages/requestcoin/requestcoin";
+import React, {useEffect, useState, useRef} from "react";
 import "../../styles/landingScreen/section1.css";
 import FAB from "../fab";
-import { Navigate, useNavigate } from 'react-router-dom';
-// import { Link } from "react-router-dom";
+import TopWallet from "../topwallet";
 
 const Section1 = () => {
-  const [showCoinRequest, setShowCoinRequest]= useState(false);
   const [loggedIn,setLoggedIn]= useState(false);
- const navigate= useNavigate();
+
 
  //Hard code object for testing:
   const user={
@@ -16,23 +13,15 @@ const Section1 = () => {
     isLoggedIn:false,
   };
 
+ 
   // useEffect(()=>{
-  //   if (user.isLoggedIn){
-  //     setLoggedIn(true);
-  //   }
-  // },);
-
-  const handleTopWalletClick = () => {
-    
-    if (user.isLoggedIn) {
-      navigate("/profile")
-    
-    } else {
-      navigate("/login");
+    //   if (user.isLoggedIn){
+      //     setLoggedIn(true);
+      //   }
+      // },);
       
-    }
-  };
-  
+      
+      const fabLabelRef=useRef(null);
 
 
 
@@ -51,11 +40,8 @@ const Section1 = () => {
             </div>
         </div>
         <div className="section1-container2">
-            <div className="top-wallet" onClick={()=>handleTopWalletClick()}>
-                <img src="/imgs/coin-request-icon.png" alt="" />
-                <p>Top Up Your Wallet</p>
-            </div >
-            <div className="support">
+            <TopWallet isLoggedIn={user.isLoggedIn}/>
+            <div className="support" onClick={() => fabLabelRef.current.click()}>
                 <img src="/imgs/support-icon.png" alt="" />
                 <p>24/7 Support</p>
             </div>
@@ -65,8 +51,7 @@ const Section1 = () => {
             </div>
         </div>
       </section>
-      {/* {showCoinRequest} */}
-      <FAB/>
+      <FAB fabLabelRef={fabLabelRef}/>
     </div>
   );
 };
