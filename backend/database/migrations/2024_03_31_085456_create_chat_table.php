@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('chat', function (Blueprint $table) {
             $table->id();
-            $table->foreign('id')->references('id')->on('users');
+            $table->smallInteger('chat_name')->default(0);
             $table->timestamps();
         });
     }
