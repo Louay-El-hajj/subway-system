@@ -7,7 +7,7 @@ use App\Models\User;
 use App\Models\Station;
 use App\Models\Ticket;
 use App\Models\Review;
-use App\Models\Coin_Request;
+use App\Models\Coin_request;
 
 class DummyDataSeeder extends Seeder
 {
@@ -79,13 +79,13 @@ class DummyDataSeeder extends Seeder
             'review_text' => 'Excellent service!'
         ]);
 
-        $coinRequest1 = CoinRequest::create([
+        $coinRequest1 = Coin_Request::create([
             'user_id' => $user1->id,
             'amount' => 50,
             'coin_status' => 'pending'
         ]);
 
-        $coinRequest2 = CoinRequest::create([
+        $coinRequest2 = Coin_Request::create([
             'user_id' => $user2->id,
             'amount' => 100,
             'coin_status' => 'pending'
@@ -125,7 +125,7 @@ class DummyDataSeeder extends Seeder
             'review_text' => 'Average service.'
         ]);
 
-        $coinRequest3 = CoinRequest::create([
+        $coinRequest3 = Coin_request::create([
             'user_id' => $user3->id,
             'amount' => 75,
             'coin_status' => 'pending'

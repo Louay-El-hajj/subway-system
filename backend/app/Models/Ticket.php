@@ -2,16 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Ticket extends Model
 {
-    use HasFactory;
-<<<<<<< HEAD
-}
-=======
-     protected $fillable = ['price', 'user_id', 'dep_station_id', 'arr_station_id', 'date_purchased', 'arr_date', 'dep_date', 'ticket_status'];
+    protected $fillable = ['price', 'user_id', 'dep_station_id', 'arr_station_id', 'date_purchased', 'arr_date', 'dep_date', 'ticket_status'];
 
     public function user()
     {
@@ -33,4 +28,3 @@ class Ticket extends Model
         return $this->hasOne(Review::class);
     }
 }
->>>>>>> main
