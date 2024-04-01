@@ -1,14 +1,36 @@
-import React, {useState} from "react";
+import React, {useState,useEffect,useRef} from "react";
 import RequestCoins from "../../pages/requestcoin/requestcoin";
 import "../../styles/landingScreen/section1.css";
 import FAB from "../fab";
+import Section2 from "./section2";
 
 const Section1 = () => {
   const [showCoinRequest, setShowCoinRequest]= useState(false);
-  
   const handleTopWalletClick=()=>{
     setShowCoinRequest(true);
   }
+  
+  const section2Ref = useRef(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!section2Ref.current) return;
+
+      const section1Bottom = window.innerHeight + window.scrollY;
+      const section2Top = section2Ref.current.offsetTop;
+
+      if (section1Bottom >= section2Top) {
+        section2Ref.current.scrollIntoView({ behavior: "smooth" });
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <div className="home-main">
       <section className="home-section1">
@@ -40,6 +62,7 @@ const Section1 = () => {
       </section>
       {showCoinRequest && <RequestCoins/>}
       <FAB/>
+      <Section2 ref={section2Ref} />
     </div>
   );
 };

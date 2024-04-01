@@ -78,6 +78,9 @@
     align-items: center;
     justify-content: center;
 }
+.support:hover {
+    cursor: pointer;
+  }
 .section1-container2-3{
     display: flex;
     flex-direction: column;
