@@ -13,7 +13,7 @@ const RequestCoins = () => {
       formData.append("coins", coins);
 
       const response = await axios.post(
-        // "http://localhost/subway-system/backend/",
+        "http://localhost/subway-system/backend/",
         formData
       );
 

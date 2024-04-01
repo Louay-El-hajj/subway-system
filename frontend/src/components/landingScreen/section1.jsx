@@ -1,8 +1,14 @@
-import React from "react";
-// import { Link } from 'react-router-dom';
+import React, {useState} from "react";
+import RequestCoins from "../../pages/requestcoin/requestcoin";
 import "../../styles/landingScreen/section1.css";
+import FAB from "../fab";
 
 const Section1 = () => {
+  const [showCoinRequest, setShowCoinRequest]= useState(false);
+  
+  const handleTopWalletClick=()=>{
+    setShowCoinRequest(true);
+  }
   return (
     <div className="home-main">
       <section className="home-section1">
@@ -18,11 +24,11 @@ const Section1 = () => {
             </div>
         </div>
         <div className="section1-container2">
-            <div className="section1-container2-1">
+            <div className="top-wallet" onClick={handleTopWalletClick}>
                 <img src="/imgs/coin-request-icon.png" alt="" />
                 <p>Top Up Your Wallet</p>
             </div >
-            <div className="section1-container2-2">
+            <div className="support">
                 <img src="/imgs/support-icon.png" alt="" />
                 <p>24/7 Support</p>
             </div>
@@ -32,6 +38,8 @@ const Section1 = () => {
             </div>
         </div>
       </section>
+      {showCoinRequest && <RequestCoins/>}
+      <FAB/>
     </div>
   );
 };
