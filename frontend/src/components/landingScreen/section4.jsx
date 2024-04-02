@@ -1,5 +1,6 @@
 import React from 'react';
 import "../../styles/landingScreen/section4.css";
+// import FAB from '../fab';
 const Section4 = () => {
   return (
     <div className="section4">
@@ -14,6 +15,7 @@ const Section4 = () => {
         <div className='section4-book child4'>
             <img src="/imgs/book-icon.png" alt="" />
         </div>
+        {/* <FAB/> */}
     </div>
   )
 }

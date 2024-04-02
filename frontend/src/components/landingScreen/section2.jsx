@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "../../styles/landingScreen/section2.css";
+import { useNavigate } from 'react-router-dom';
+// import FAB from "../fab";
 
-const Section2 = ({from,to,price,rating}) => {
+const Section2 = ({from,to,price,rating,isLoggedIn}) => {
   const [buttonClicked, setButtonClicked]= useState(false);
+  const navigate = useNavigate(); 
+  
   const handleButtonClick = async () => {
     if (!isLoggedIn) {
       navigate("/login");
@@ -45,6 +49,7 @@ const Section2 = ({from,to,price,rating}) => {
         </div>
         <button className={`section2-button ${buttonClicked ? "clicked": ""}`} onClick={handleButtonClick}>Book</button>
       </section>
+      {/* <FAB/> */}
     </div>
   );
 };

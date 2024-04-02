@@ -12,14 +12,14 @@
     width:fit-content;
     height:fit-content;
     background-color: white;
-    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.5);
     padding: 20px;
     border-radius: 30px;
     gap: 5px ;
   }
   .section2-title{
     margin-left: 0;
-    font-size: 50px;
+    font-size: 40px;
     padding-bottom: 40px;
     
   }
