@@ -42,6 +42,7 @@ class UserController extends Controller
         }
 
         return $this->respondWithToken($token);
+        print_r('nigga');
     }
 
     public function logout()
