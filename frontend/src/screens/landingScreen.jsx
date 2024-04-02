@@ -6,6 +6,8 @@ import Section2 from "../components/landingScreen/section2";
 import Section3 from "../components/landingScreen/section3";
 import Section4 from "../components/landingScreen/section4";
 import Footer from "../components/landingScreen/footer";
+import MapSection from "../components/mapsection";
+
 
 const LandingScreen = () => {
 
@@ -16,6 +18,7 @@ const LandingScreen = () => {
         <Section2/>    
         <Section3/> 
         <Section4/>
+        <MapSection/>
         <Footer/>
         
     </div>
