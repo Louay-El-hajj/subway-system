@@ -20,6 +20,6 @@ class Chat extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class)->withPivot('seen');
+        return $this->belongsToMany(User::class);
     }
 }

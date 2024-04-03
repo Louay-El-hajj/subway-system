@@ -8,6 +8,7 @@ use App\Models\User;
 
 class UserController extends Controller
 {
+    
     public function register(Request $request)
     {
         $request->validate([
@@ -21,14 +22,16 @@ class UserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
-            'user_type' => $request->user_type
+            // 'user_type' => $request->user_type
+            print_r("register done")
         ]);
 
         
         $token = auth()->login($user);
 
         return $this->respondWithToken($token);
-    }
+        // return print_r("registred");
+        }
 
     public function login(Request $request)
     {
@@ -38,11 +41,11 @@ class UserController extends Controller
         ]);
 
         if (!$token = auth()->attempt($request->only('email', 'password'))) {
-            return response()->json(['error' => 'Unauthorized'], 401);
+            return response()->json(['error' => 'Unauthorized from user controller'], 401);
         }
 
-        return $this->respondWithToken($token);
-        print_r('helo world');
+         return $this->respondWithToken($token);
+        // print_r("hello world");
     }
 
     public function logout()
@@ -82,6 +85,10 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->delete();
         return response()->json(null, 204);
+    }
+        public function getJWTCustomClaims()
+    {
+        return [];
     }
 
     //     public function index()

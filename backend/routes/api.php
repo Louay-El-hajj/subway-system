@@ -10,6 +10,9 @@ use App\Http\Controllers\CoinRequestController;
 use App\Http\Controllers\PassController;
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\HeadquartersController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,24 +24,27 @@ use App\Http\Controllers\HeadquartersController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
+ 
 
 Route::post('register', [UserController::class, 'register']);
-Route::post('login', [UserController::class, 'login']);
 Route::post('logout', [UserController::class, 'logout']);
+Route::post('login', [UserController::class, 'login']);
+
+Route::get('stations', [StationController::class, 'index']);
+Route::get('stations/{id}', [StationController::class, 'show']);
+Route::get('tickets', [TicketController::class, 'index']);
+Route::get('tickets/{id}', [TicketController::class, 'show']);
 
 
 Route::group(['middleware' => 'auth.jwt'], function () {
-    Route::get('stations', [StationController::class, 'index']);
-    Route::get('stations/{id}', [StationController::class, 'show']);
-    Route::get('tickets', [TicketController::class, 'index']);
-    Route::get('tickets/{id}', [TicketController::class, 'show']);
+
+    
     Route::post('tickets', [TicketController::class, 'store']);
     Route::post('passes', [PassController::class, 'store']);
     Route::post('coin-requests', [CoinRequestController::class, 'store']);
     Route::post('reviews', [ReviewController::class, 'store']);
-
-     Route::get('users', [UserController::class, 'index']); 
+    
+    Route::get('users', [UserController::class, 'index']); 
     Route::get('users/{id}', [UserController::class, 'show']); 
     Route::put('users/{id}', [UserController::class, 'update']); 
     Route::delete('users/{id}', [UserController::class, 'destroy']); 

@@ -11,16 +11,22 @@ class JWTMiddleware
     /**
      * Handle an incoming request.
      *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure  $next
+     * @return mixed
      */
-    public function handle(Request $request, Closure $next): Response
-    {
-        try {
-            $user = Auth::guard('api')->userOrFail();
-        } catch (\Exception $e) {
-            return response()->json(['error' => 'Unauthorized'], 401);
+   public function handle(Request $request, Closure $next)
+{
+    try {
+       
+        if (!auth()->check()) {
+            throw new \Exception('Token is invalid');
         }
-
-        return $next($request);
+    } catch (\Exception $e) {
+        return response()->json(['error' => 'Unauthorized'], 401);
     }
+
+    return $next($request);
+}
+
 }
