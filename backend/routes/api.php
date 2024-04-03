@@ -62,7 +62,8 @@ Route::group(['middleware' => 'auth.jwt'], function () {
     Route::get('profile', [UserController::class, 'showProfile']);
     Route::put('profile', [UserController::class, 'updateProfile']);
 
-    Route::get('chats', [ChatController::class, 'index']);
+    Route::get('chats', [ChatController::class, 'index']);   
+    ;
     Route::get('chats/{id}', [ChatController::class, 'show']);
     Route::post('chats', [ChatController::class, 'create']);
 });
