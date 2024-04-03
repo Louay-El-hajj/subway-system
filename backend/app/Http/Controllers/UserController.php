@@ -42,7 +42,7 @@ class UserController extends Controller
         }
 
         return $this->respondWithToken($token);
-        print_r('nigga');
+        print_r('helo world');
     }
 
     public function logout()
@@ -59,6 +59,29 @@ class UserController extends Controller
             'token_type' => 'bearer',
             'expires_in' => auth()->factory()->getTTL() * 60
         ]);
+    }
+     public function index()
+    {
+        return User::all();
+    }
+
+    public function show($id)
+    {
+        return User::findOrFail($id);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+        $user->update($request->all());
+        return $user;
+    }
+
+    public function destroy($id)
+    {
+        $user = User::findOrFail($id);
+        $user->delete();
+        return response()->json(null, 204);
     }
 
     //     public function index()
