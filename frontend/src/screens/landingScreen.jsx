@@ -10,15 +10,26 @@ import MapSection from "../components/mapsection";
 
 
 const LandingScreen = () => {
+  // Sample data for branches and rides
+  const branches = [
+    { coordinates: [33.8886, 35.4955], name: "Branch 1", address: "Address 1" },
+    { coordinates: [33.8756, 35.5314], name: "Branch 2", address: "Address 2" },
+    
+  ];
 
+  const rides = [
+    { path: [[33.8886, 35.4955], [33.8756, 35.5314]], name: "Ride 1", distance: 5 },   
+  ];
+
+  
   return (
     <div >
         <Hero/>
         <Section1/> 
         <Section2/>    
+        <MapSection branches={branches} rides={rides} />
         <Section3/> 
         <Section4/>
-        <MapSection/>
         <Footer/>
         
     </div>

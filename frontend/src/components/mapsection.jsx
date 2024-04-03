@@ -1,34 +1,49 @@
-import React, { useEffect, useRef } from 'react';
-import L from 'leaflet';
+import React, { useEffect, useRef, useState } from 'react';
+import L from 'leaflet'; 
+import 'leaflet/dist/leaflet.css'; 
+// import './style.css'; 
 
-const MapSection = () => {
-  const mapRef = useRef(null); // Ref to store the map instance
-  const mapInitialized = useRef(false); // Flag to track if the map is initialized
+const MapSection = ({ branches, rides }) => {
+  const [map, setMap] = useState(null);
+  const mapRef = useRef(null);
 
   useEffect(() => {
-    if (!mapInitialized.current) {
-      // Create a map instance
-      mapRef.current = L.map('mapid').setView([51.505, -0.09], 13);
+    if (!map) {
+      if (mapRef.current !== null) {
+        mapRef.current.remove();
+      }
+      
+      mapRef.current = L.map('map').setView([33.8547, 35.8623], 10); 
 
-      // Add a tile layer (for example, OpenStreetMap)
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+      const bounds = new L.LatLngBounds();
+      branches.forEach(branch => bounds.extend(branch.coordinates));
+      rides.forEach(ride => ride.path.forEach(coord => bounds.extend(coord)));
+
+      L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+        attribution: 'Map data &copy; <a href="https://www.mapbox.com/">Mapbox</a>',
         maxZoom: 18,
+        id: 'mapbox/streets-v11',
+        tileSize: 512,
+        zoomOffset: -1,
+        accessToken: 'pk.eyJ1IjoicmFiaWgxMiIsImEiOiJjbHVqbzB3cjgwZG5qMmtwaGd6OHE2djg0In0.kDsXVw_gudRSA-0MGICxVw'
       }).addTo(mapRef.current);
 
-      // Add a marker
-      L.marker([51.5, -0.09]).addTo(mapRef.current)
-        .bindPopup('A popup for the marker.')
-        .openPopup();
+      branches.forEach(branch => {
+        L.marker(branch.coordinates).addTo(mapRef.current)
+          .bindPopup(`<strong>${branch.name}</strong><br>${branch.address}`);
+      });
 
-      mapInitialized.current = true; // Set flag to true after initialization
+      rides.forEach(ride => {
+        L.polyline(ride.path, { color: 'red' }).addTo(mapRef.current)
+          .bindPopup(`<strong>${ride.name}</strong><br>Distance: ${ride.distance} km`);
+      });
+
+      setMap(mapRef.current);
     }
-  }, []); // Empty dependency array to run only once after the component is mounted
+  }, [branches, rides, map]);
 
   return (
-    <div>
-      <div id="mapid" style={{ height: '400px' }}></div>
-    </div>
+    <div style={{ height: '400px', width: '100%' }} id="map" />
   );
 };
 
