@@ -25,8 +25,10 @@ const AuthForm = () => {
 
     try {
       const response = await axios.post(endpoint, data);
-      const token = response.data.token;
+      const token = response.data.authorisation.token;
+      console.log(response);
       localStorage.setItem("token", token);
+
       navigate("/");
       console.log("Authentication successful", token);
     } catch (error) {
