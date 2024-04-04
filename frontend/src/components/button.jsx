@@ -1,12 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
+import "../styles/button.css";
 
 const Button = ({ onClick, children }) => {
   return (
-    <button
-      style={{ backgroundColor: '#ff4d4d', color: 'white', padding: '10px 20px', border: 'none', borderRadius: '5px', cursor: 'pointer' }}
-      onClick={onClick}
-    >
+    <button className="button" onClick={onClick}>
       {children}
     </button>
   );

@@ -4,10 +4,10 @@ import "../../styles/commons/utilities.css";
 import "../../styles/commons/colors.css";
 const Footer = () => {
   return (
-    <footer className="footer secondary-bg">
+    <footer className="footer primary-bg">
       <div className="footer-section1 flex">
         <div className="footer-section1-img">
-        <img src="/imgs/logo-footer.png" alt="" />
+        <img src="/imgs/logo.png" alt="" />
         </div>
         <div className="footer-info flex">
           <p>Destinations</p>

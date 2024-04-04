@@ -2,6 +2,7 @@
     width: 100%;
     padding-left:20px ;
     padding-right: 20px;
+    color: white;
 }
 .footer-section1{
     align-items: center;
@@ -9,6 +10,12 @@
 }
 .footer-section1-img{
     flex: 2;
+    /* width: 100px; */
+    /* height: 100px; */
+}
+.footer-section1 img{
+    width: 130px;
+    height: 100px;
 }
 .footer-section2{
     
