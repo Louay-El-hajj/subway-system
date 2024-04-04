@@ -28,13 +28,14 @@ use App\Http\Controllers\RegisterController;
 Route::post('registerPassenger', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
 
-Route::post('logout', [AuthController::class, 'logout']);
 
 Route::get('stations', [StationController::class, 'index']);
 Route::get('stations/{id}', [StationController::class, 'show']);
 Route::get('tickets/{id}', [TicketController::class, 'show']);
 
 Route::group(['middleware' => 'auth.jwt'], function () {
+
+Route::post('logout', [AuthController::class, 'logout']);
 
     Route::post('tickets', [TicketController::class, 'store']);
     Route::post('passes', [PassController::class, 'store']);
