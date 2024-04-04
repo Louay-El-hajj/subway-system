@@ -125,7 +125,8 @@ class DummyDataSeeder extends Seeder
             'review_text' => 'Average service.'
         ]);
 
-        $coinRequest3 = Coin_request::create([
+        $coinRequest3 = Coin_Request::create([
+
             'user_id' => $user3->id,
             'amount' => 75,
             'coin_status' => 'pending'

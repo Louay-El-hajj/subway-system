@@ -23,11 +23,12 @@
 }
 .nav-home {
     display: flex;
-  flex: 1;
+  flex: 0.75;
   align-items: center;
   justify-content: end;
   align-self: flex-end;
   height: 100%;
+  margin-right: 12px;
 }
 .nav-container {
   width: 50%;
@@ -42,11 +43,11 @@
   height: 70%;
 }
 .hero-title {
-  font-size: 80px;
+  font-size: 60px;
   padding: 30px;
 }
 .hero-text {
-  font-size: 40px;
+  font-size: 30px;
 }
 .Link{
   text-decoration: none;
