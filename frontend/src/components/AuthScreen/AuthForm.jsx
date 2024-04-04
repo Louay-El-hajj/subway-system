@@ -26,15 +26,18 @@ const AuthForm = () => {
     try {
       const response = await axios.post(endpoint, data);
       const token = response.data.authorisation.token;
-      console.log(response);
+      const id = response.data.user.id;
+      const user_data=JSON.stringify( response.data.user)
       localStorage.setItem("token", token);
+      localStorage.setItem("id", id);
+      localStorage.setItem("user", user_data);
+      console.log(id);
+      // console.log(localStorage.setItem("user_data", response.data.user.id));
 
       navigate("/");
       console.log("Authentication successful", token);
     } catch (error) {
-      setError(
-        error.response.data.message || "Something went wrong. Please try again."
-      );
+      setError("Something went wrong. Please try again.");
     }
   };
 

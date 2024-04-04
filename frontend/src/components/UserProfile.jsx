@@ -11,19 +11,21 @@ const UserProfile = () => {
   const [response, setResponse] = useState();
 
   useEffect(() => {
+    const id = localStorage.getItem("id");
+
     const fetchUserDetails = async () => {
       setIsLoading(true);
       try {
         setResponse(
-          await axios.get(`http://127.0.0.1:8000/api/user/${1}`, {
+          await axios.get(`http://127.0.0.1:8000/api/users/${id}`, {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
             },
           })
         );
-        setUserDetails(response.data.user);
-        console.log(localStorage.getItem("token"));
-        console.log(userDetails);
+        setUserDetails(response.data);
+
+        console.log(response.data);
       } catch (error) {
         console.error("Error fetching user details:", error);
       } finally {
@@ -36,7 +38,7 @@ const UserProfile = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("token");
-    window.location.href = "/login";
+    window.location.href = "/aa";
   };
 
   if (isLoading) return <div>Loading...</div>;
@@ -62,7 +64,8 @@ const UserProfile = () => {
             <span className="label">Email:</span> {userDetails.email}
           </p>
           <p>
-            <span className="label">Coin Balance:</span> {userDetails.coins}
+            <span className="label">Coin Balance:</span>{" "}
+            {userDetails.coin_amount}
           </p>
           {/* Add more user details as needed */}
         </div>
