@@ -7,7 +7,7 @@ use App\Models\User;
 use App\Models\Station;
 use App\Models\Ticket;
 use App\Models\Review;
-use App\Models\Coin_Request;
+use App\Models\Coin_request;
 
 class DummyDataSeeder extends Seeder
 {
@@ -126,6 +126,7 @@ class DummyDataSeeder extends Seeder
         ]);
 
         $coinRequest3 = Coin_Request::create([
+
             'user_id' => $user3->id,
             'amount' => 75,
             'coin_status' => 'pending'

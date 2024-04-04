@@ -28,6 +28,9 @@ return new class extends Migration
     $table->enum('user_type',['passenger','manager','headquarter']);
     // $table->date('registration_date');
     $table->bigInteger('coin_amount')->default(0);
+        
+             $table->string('remember_token')->default(0);
+
     $table->timestamps();
 });
  
