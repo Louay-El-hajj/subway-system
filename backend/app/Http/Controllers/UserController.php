@@ -22,15 +22,15 @@ class UserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
-            // 'user_type' => $request->user_type
-            print_r("register done")
+            'user_type' => $request->user_type,
+          
         ]);
-
+  print_r("register done");
         
         $token = auth()->login($user);
 
         return $this->respondWithToken($token);
-        // return print_r("registred");
+        return print_r("registred");
         }
 
     public function login(Request $request)

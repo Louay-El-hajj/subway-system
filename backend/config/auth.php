@@ -13,12 +13,10 @@ return [
     |
     */
 
-'defaults' => [
+    'defaults' => [
         'guard' => 'api',
         'passwords' => 'users',
     ],
-
-
 
     /*
     |--------------------------------------------------------------------------
@@ -36,19 +34,17 @@ return [
     | Supported: "session"
     |
     */
+
     'guards' => [
         'web' => [
             'driver' => 'session',
             'provider' => 'users',
         ],
-
-        'api' => [
-                'driver' => 'jwt',
-                'provider' => 'users',
-        ],
-
+         'api' => [
+        'driver' => 'jwt',
+        'provider' => 'users',
     ],
-    
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -73,12 +69,11 @@ return [
             'model' => App\Models\User::class,
         ],
 
-        'users' => [
-            'driver' => 'database',
-            'table' => 'users',
-        ],
+        // 'users' => [
+        //     'driver' => 'database',
+        //     'table' => 'users',
+        // ],
     ],
-
 
     /*
     |--------------------------------------------------------------------------

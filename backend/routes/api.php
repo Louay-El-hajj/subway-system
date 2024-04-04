@@ -24,18 +24,23 @@ use App\Http\Controllers\RegisterController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+Route::post('register', [AuthController::class, 'register']);
+Route::post('login', [AuthController::class, 'login']);
+
+ Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
+});
  
 
-Route::post('register', [UserController::class, 'register']);
 Route::post('logout', [UserController::class, 'logout']);
-Route::post('login', [UserController::class, 'login']);
 
 Route::get('stations', [StationController::class, 'index']);
 Route::get('stations/{id}', [StationController::class, 'show']);
 Route::get('tickets', [TicketController::class, 'index']);
 Route::get('tickets/{id}', [TicketController::class, 'show']);
 
-
+ 
 Route::group(['middleware' => 'auth.jwt'], function () {
 
     

@@ -13,7 +13,7 @@ public function __construct()
 $this->middleware('auth:api', ['except' => ['login','register']]);
 }
 
-public function login(Request $request)
+public function login(Request $request) 
 {
 $request->validate([
 'email' => 'required|string|email',
