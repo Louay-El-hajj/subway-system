@@ -9,10 +9,8 @@ class Chat extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        // Add columns as needed (e.g., name, type)
-    ];
-
+ protected $fillable = ['user_id', 'message', 'branch_id'];
+ 
     public function messages()
     {
         return $this->hasMany(Message::class);

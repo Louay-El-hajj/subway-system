@@ -68,5 +68,7 @@ class Kernel extends HttpKernel
         'passenger' => \App\Http\Middleware\PassengerMiddleware::class,
         'branch' => \App\Http\Middleware\BranchMiddleware::class,
         'headquarters' => \App\Http\Middleware\HeadquartersMiddleware::class,
+            'auth.jwt' => \Tymon\JWTAuth\Http\Middleware\Authenticate::class,
+
     ];
 } 

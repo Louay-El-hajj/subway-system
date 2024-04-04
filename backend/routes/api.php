@@ -63,8 +63,6 @@ Route::group(['middleware' => 'auth.jwt'], function () {
     Route::get('coin-requests/{id}', [CoinRequestController::class, 'show']);
     Route::delete('coin-requests/{id}', [CoinRequestController::class, 'destroy']);
 
-    Route::get('search/users', [SearchController::class, 'searchUsers']);
-    Route::get('search/stations', [SearchController::class, 'searchStations']);
 
     Route::group(['prefix' => 'branches'], function () {
         Route::get('stations/{id}', [StationController::class, 'show']);
