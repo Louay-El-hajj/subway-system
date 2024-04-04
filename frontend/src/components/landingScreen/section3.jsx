@@ -1,6 +1,7 @@
 import React from "react";
 // import { Link } from 'react-router-dom';
 import "../../styles/landingScreen/section3.css";
+// import FAB from "../fab";
 
 const Section3 = () => {
   return (
@@ -23,8 +24,8 @@ const Section3 = () => {
                 </select>
               </div>
             </div>
-              <hr className="line" />
           </div>
+              <hr className="line" />
           <div className="section3-container1-2">
             <div className="section3-depart">
               <img src="/imgs/calendar-icon.png" alt="" />
@@ -43,6 +44,7 @@ const Section3 = () => {
         <div className="section3-container2">
           <img src="/imgs/search-icon2.png" alt="" />
         </div>
+        {/* <FAB/> */}
       </div>
     
   );
