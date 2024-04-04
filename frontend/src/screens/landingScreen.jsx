@@ -8,7 +8,6 @@ import Section4 from "../components/landingScreen/section4";
 import Footer from "../components/landingScreen/footer";
 import MapSection from "../components/mapsection";
 
-
 const LandingScreen = () => {
   // Sample data for branches and rides
   // const branches = [
@@ -32,7 +31,6 @@ const LandingScreen = () => {
     </div>
   );
 };
-
 
 export default LandingScreen;
 

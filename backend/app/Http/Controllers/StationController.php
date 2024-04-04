@@ -58,4 +58,5 @@ class StationController extends Controller
             return response()->json(['message' => 'Station not found'], 404);
         }
     }
+    
 }
