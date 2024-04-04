@@ -17,9 +17,9 @@ const LandingScreen = () => {
     
   ];
 
-  const rides = [
-    { path: [[33.8886, 35.4955], [33.8756, 35.5314]], name: "Ride 1", distance: 5 },   
-  ];
+  // const rides = [
+  //   { path: [[33.8886, 35.4955], [33.8756, 35.5314]], name: "Ride 1", distance: 5 },   
+  // ];
 
   
   return (
@@ -27,7 +27,7 @@ const LandingScreen = () => {
         <Hero/>
         <Section1/> 
         <Section2/>    
-        <MapSection branches={branches} rides={rides} />
+        <MapSection branches={branches}  />
         <Section3/> 
         <Section4/>
         <Footer/>
