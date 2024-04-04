@@ -35,7 +35,7 @@ Route::get('tickets/{id}', [TicketController::class, 'show']);
 
 Route::group(['middleware' => 'auth.jwt'], function () {
 
-Route::post('logout', [AuthController::class, 'logout']);
+    Route::post('logout', [AuthController::class, 'logout']);
 
     Route::post('tickets', [TicketController::class, 'store']);
     Route::post('passes', [PassController::class, 'store']);
@@ -56,10 +56,6 @@ Route::post('logout', [AuthController::class, 'logout']);
     Route::put('reviews/{id}', [ReviewController::class, 'update']);
     Route::delete('reviews/{id}', [ReviewController::class, 'destroy']);
 
-    Route::get('departures', [DepartureController::class, 'index']);
-    Route::get('arrivals', [ArrivalController::class, 'index']);
-    Route::get('departures/{id}', [DepartureController::class, 'show']);
-    Route::get('arrivals/{id}', [ArrivalController::class, 'show']);
 
     Route::get('coin-requests/{id}', [CoinRequestController::class, 'show']);
     Route::delete('coin-requests/{id}', [CoinRequestController::class, 'destroy']);

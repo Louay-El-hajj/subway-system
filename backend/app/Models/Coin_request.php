@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Coin_request extends Model
 {
     use HasFactory;
-     protected $fillable = ['user_id', 'amount', 'coin_status'];
+     protected $fillable = ['user_id', 'amount'];
 
     public function user()
     {

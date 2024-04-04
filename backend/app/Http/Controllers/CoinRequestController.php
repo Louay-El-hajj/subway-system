@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\CoinRequest;
+use App\Models\Coin_request;
 use App\Models\User;
 
 class CoinRequestController extends Controller
@@ -17,7 +17,7 @@ class CoinRequestController extends Controller
 
         $user = User::find($validatedData['user_id']);
         if ($user) {
-            $coinRequest = new CoinRequest([
+            $coinRequest = new Coin_request([
                 'user_id' => $user->id,
                 'amount' => $validatedData['amount'],
                 'coin_status' => 'pending',
