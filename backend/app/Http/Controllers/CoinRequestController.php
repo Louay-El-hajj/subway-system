@@ -40,17 +40,17 @@ class CoinRequestController extends Controller
         }
     }
 
-    public function handleCoinRequest(Request $request, $id)
-    {
-        $coinRequest = CoinRequest::find($id);
-        if ($coinRequest) {
-            $coinRequest->coin_status = $request->input('coin_status');
-            $coinRequest->save();
-            return response()->json($coinRequest, 200);
-        } else {
-            return response()->json(['message' => 'Coin request not found'], 404);
-        }
-    }
+    // public function handleCoinRequest(Request $request, $id)
+    // {
+    //     $coinRequest = CoinRequest::find($id);
+    //     if ($coinRequest) {
+    //         $coinRequest->coin_status = $request->input('coin_status');
+    //         $coinRequest->save();
+    //         return response()->json($coinRequest, 200);
+    //     } else {
+    //         return response()->json(['message' => 'Coin request not found'], 404);
+    //     }
+    // }
 
     public function destroy($id)
     {

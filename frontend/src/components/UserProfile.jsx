@@ -3,27 +3,31 @@
 import "./../styles/Auth/UserProfile.css";
 
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router";
 import axios from "axios";
 
 const UserProfile = () => {
+  const navigate = useNavigate();
   const [userDetails, setUserDetails] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [response, setResponse] = useState();
+  const [id,setId]=useState(0);
+  setId(localStorage.getItem("id"));
 
   useEffect(() => {
     const fetchUserDetails = async () => {
       setIsLoading(true);
       try {
         setResponse(
-          await axios.get(`http://127.0.0.1:8000/api/user/${1}`, {
+          await axios.get(`http://127.0.0.1:8000/api/users/${id}`, {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
             },
           })
         );
-        setUserDetails(response.data.user);
-        console.log(localStorage.getItem("token"));
-        console.log(userDetails);
+        setUserDetails(response.data);
+
+        console.log(response.data);
       } catch (error) {
         console.error("Error fetching user details:", error);
       } finally {
@@ -36,7 +40,7 @@ const UserProfile = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("token");
-    window.location.href = "/login";
+    navigate("/aa");
   };
 
   if (isLoading) return <div>Loading...</div>;
@@ -50,7 +54,7 @@ const UserProfile = () => {
       <div className="user-details">
         <div className="avatar">
           <img
-            src={`https://avatars.dicebear.com/api/human/${userDetails.email}.svg`}
+            // src={`https://avatars.dicebear.com/api/human/${userDetails.email}.svg`}
             alt="Avatar"
           />
         </div>
@@ -62,7 +66,8 @@ const UserProfile = () => {
             <span className="label">Email:</span> {userDetails.email}
           </p>
           <p>
-            <span className="label">Coin Balance:</span> {userDetails.coins}
+            <span className="label">Coin Balance:</span>{" "}
+            {userDetails.coin_amount}
           </p>
           {/* Add more user details as needed */}
         </div>

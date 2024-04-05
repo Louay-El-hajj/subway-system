@@ -55,7 +55,7 @@ Route::group(['middleware' => 'auth.jwt'], function () {
     Route::get('reviews/{id}', [ReviewController::class, 'show']);
     Route::put('reviews/{id}', [ReviewController::class, 'update']);
     Route::delete('reviews/{id}', [ReviewController::class, 'destroy']);
-
+    Route::post('book-ticket/{ticket}', [TicketController::class, 'bookTicket']);
 
     Route::get('coin-requests/{id}', [CoinRequestController::class, 'show']);
     Route::delete('coin-requests/{id}', [CoinRequestController::class, 'destroy']);
@@ -64,8 +64,7 @@ Route::group(['middleware' => 'auth.jwt'], function () {
     Route::group(['prefix' => 'branches'], function () {
         Route::get('stations/{id}', [StationController::class, 'show']);
         Route::put('stations/{id}', [StationController::class, 'update']);
-        Route::post('departures', [BranchController::class, 'storeDeparture']);
-        Route::post('arrivals', [BranchController::class, 'storeArrival']);
+
         Route::post('reviews', [BranchController::class, 'storeReview']);
         Route::get('chats', [BranchController::class, 'indexChat']);
         Route::post('chats', [BranchController::class, 'storeChat']);
