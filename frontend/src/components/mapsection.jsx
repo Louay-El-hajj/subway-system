@@ -53,6 +53,7 @@ const MapSection = () => {
             const branch1= branches[0].coordinates;
             const branch2= branches[1].coordinates;
             const path=[branch1,branch2];
+            console.log("Branches:", branches);
 
             L.polyline(path, { color: 'red' }).addTo(mapRef.current)
             .bindPopup(`<strong>Path</strong><br>From: ${branches[0].name} To: ${branches[1].name}`);
@@ -68,7 +69,7 @@ const MapSection = () => {
       
       setBranches([
         {name:city1, coordinates:[city1Data.lng, city1Data.lat]},
-        {name:city2, coordinates:[city2Data.lng, city1Data.lat]},
+        {name:city2, coordinates:[city2Data.lng, city2Data.lat]},
         
       ]);
     } catch (error){
@@ -84,6 +85,7 @@ const MapSection = () => {
     const data = await response.json();
     if (data.features.length>0){
       const{center}=data.features[0];
+      console.log(center);
       return {lng:center[0], lat:center[1]};
     }else {
       throw new Error('City not found');
@@ -98,13 +100,13 @@ const MapSection = () => {
       <div style={{ marginBottom: '10px' }}>
         <input 
           type="text" 
-          placeholder="Enter City 1" 
+          placeholder="Enter departure city" 
           value={city1} 
           onChange={(e) => setCity1(e.target.value)} 
         />
         <input 
           type="text" 
-          placeholder="Enter City 2" 
+          placeholder="Enter arrival city" 
           value={city2} 
           onChange={(e) => setCity2(e.target.value)} 
         />
