@@ -3,16 +3,18 @@
 import "./../styles/Auth/UserProfile.css";
 
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router";
 import axios from "axios";
 
 const UserProfile = () => {
+  const navigate = useNavigate();
   const [userDetails, setUserDetails] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [response, setResponse] = useState();
+  const [id,setId]=useState(0);
+  setId(localStorage.getItem("id"));
 
   useEffect(() => {
-    const id = localStorage.getItem("id");
-
     const fetchUserDetails = async () => {
       setIsLoading(true);
       try {
@@ -38,7 +40,7 @@ const UserProfile = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("token");
-    window.location.href = "/aa";
+    navigate("/aa");
   };
 
   if (isLoading) return <div>Loading...</div>;
@@ -52,7 +54,7 @@ const UserProfile = () => {
       <div className="user-details">
         <div className="avatar">
           <img
-            src={`https://avatars.dicebear.com/api/human/${userDetails.email}.svg`}
+            // src={`https://avatars.dicebear.com/api/human/${userDetails.email}.svg`}
             alt="Avatar"
           />
         </div>

@@ -69,4 +69,23 @@ class TicketController extends Controller
             return response()->json(['message' => 'Ticket not found'], 404);
         }
     }
+
+     public function bookTicket(Request $request, Ticket $ticket)
+    {
+        $user = $request->user();
+        $ticketPrice = $ticket->price;
+
+        if ($user->coin_amount >= $ticketPrice) {
+            $ticket->user_id = $user->id;
+            $ticket->ticket_status = 'booked';
+            $ticket->save();
+
+            $user->coin_amount -= $ticketPrice;
+            $user->save();
+
+            return response()->json(['message' => 'Ticket booked successfully'], 200);
+        } else {
+            return response()->json(['error' => 'Insufficient coins'], 400);
+        }
+    }
 }
