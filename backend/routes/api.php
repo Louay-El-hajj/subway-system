@@ -57,8 +57,6 @@ Route::group(['middleware' => 'auth.jwt'], function () {
     Route::delete('reviews/{id}', [ReviewController::class, 'destroy']);
     Route::post('book-ticket/{ticket}', [TicketController::class, 'bookTicket']);
 
-
-
     Route::get('coin-requests/{id}', [CoinRequestController::class, 'show']);
     Route::delete('coin-requests/{id}', [CoinRequestController::class, 'destroy']);
 
