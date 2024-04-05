@@ -5,7 +5,8 @@ import "../../styles/commons/colors.css";
 import "../../styles/commons/utilities.css";
 import Button from "../button";
 
-const Hero = ({ isLoggedIn }) => {
+const Hero = () => {
+  const token = localStorage.getItem('token');
   return (
     <div className="hero-section">
       <header className="header ">
@@ -25,12 +26,12 @@ const Hero = ({ isLoggedIn }) => {
               </a>
             </li>
             <li>
-            {isLoggedIn ? (
-                <Button onClick={() => {}} to="/profile">
+            {token ? (
+                <Button to="/profile">
                   Profile
                 </Button>
               ) : (
-                <Button onClick={() => {}} to="/login">
+                <Button to="/login">
                   Login
                 </Button>
               )}

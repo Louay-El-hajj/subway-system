@@ -1,18 +1,13 @@
 import React from "react";
-import PropTypes from "prop-types";
 import "../styles/button.css";
+import { Link } from "react-router-dom";
 
-const Button = ({ onClick, children }) => {
+const Button = ({ to, children }) => {
   return (
-    <button className="button" onClick={onClick}>
-      {children}
-    </button>
+    <Link className="button" to={to}>
+      <button> {children}</button>
+    </Link>
   );
-};
-
-Button.propTypes = {
-  onClick: PropTypes.func,
-  children: PropTypes.node.isRequired,
 };
 
 export default Button;
