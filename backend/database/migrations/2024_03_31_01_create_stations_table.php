@@ -19,6 +19,19 @@ return new class extends Migration
             $table->string('station_img');
             $table->timestamps();
         });
+
+        Schema::create('rides', function (Blueprint $table) {
+            $table->id();
+            $table->date('date');
+            $table->time('departure_time');
+            $table->time('arrival_time');
+            $table->integer('price');
+            $table->unsignedBigInteger("from_station");
+            $table->foreign("from_station")->references("id")->on("stations")->onDelete("cascade")->onUpdate("cascade");
+            $table->unsignedBigInteger("to_station");
+            $table->foreign("to_station")->references("id")->on("stations")->onDelete("cascade")->onUpdate("cascade");
+            $table->timestamps();
+        });
     }
 
     /**

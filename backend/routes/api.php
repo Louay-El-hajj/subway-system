@@ -11,9 +11,11 @@ use App\Http\Controllers\PassController;
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\HeadquartersController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\RideController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ChatController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -58,7 +60,7 @@ Route::group(['middleware' => 'auth.jwt'], function () {
     Route::delete('reviews/{id}', [ReviewController::class, 'destroy']);
     Route::post('book-ticket/{ticket}', [TicketController::class, 'bookTicket']);
 
-
+    Route::get('get_rides', [RideController::class, 'get_rides']);
 
     Route::get('coin-requests/{id}', [CoinRequestController::class, 'show']);
     Route::delete('coin-requests/{id}', [CoinRequestController::class, 'destroy']);
@@ -91,3 +93,4 @@ Route::group(['middleware' => 'auth.jwt'], function () {
 });
 
 Route::post('reset-password', [UserController::class, 'resetPassword']);
+

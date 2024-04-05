@@ -9,9 +9,10 @@ const token = localStorage.getItem('token');
   const handleTopWalletClick = () => {
     if (token) {
       navigate("/profile");
-    } else {
-      navigate("/aa");
-    }
+    } 
+    // else {
+    //   navigate("/login");
+    // }
   };
 
   return (
