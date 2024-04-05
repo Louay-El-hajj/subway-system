@@ -64,9 +64,9 @@ function Orders () {
                     <thead>
                         <th>ID</th>
                         <th>DATE</th>
-                        <th>STATUS</th>
+                        <th>STATUS</th> 
                         <th>USER</th>
-                        <th>ROUTE</th>
+                        <th>STATIONS</th>
                         <th>REVENUE</th>
                     </thead>
 
