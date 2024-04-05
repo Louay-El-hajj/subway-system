@@ -11,8 +11,11 @@ use App\Http\Controllers\PassController;
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\HeadquartersController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\RideController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\ChatController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +35,8 @@ Route::post('login', [AuthController::class, 'login']);
 Route::get('stations', [StationController::class, 'index']);
 Route::get('stations/{id}', [StationController::class, 'show']);
 Route::get('tickets/{id}', [TicketController::class, 'show']);
+Route::get('tickets', [TicketController::class, 'index']);
+
 
 Route::group(['middleware' => 'auth.jwt'], function () {
 
@@ -41,13 +46,14 @@ Route::group(['middleware' => 'auth.jwt'], function () {
     Route::post('passes', [PassController::class, 'store']);
     Route::post('coin-requests', [CoinRequestController::class, 'store']);
     Route::post('reviews', [ReviewController::class, 'store']);
+    Route::post('tickets/{ticketId}/purchase', [TicketController::class, 'purchaseTicket']);
+
 
     Route::get('users', [UserController::class, 'index']);
     Route::get('users/{id}', [UserController::class, 'show']);
     Route::put('users/{id}', [UserController::class, 'update']);
     Route::delete('users/{id}', [UserController::class, 'destroy']);
 
-    Route::get('tickets', [TicketController::class, 'index']);
     Route::put('tickets/{id}', [TicketController::class, 'update']);
     Route::delete('tickets/{id}', [TicketController::class, 'destroy']);
     Route::get('tickets/{id}/history', [TicketController::class, 'getHistory']);
@@ -56,6 +62,8 @@ Route::group(['middleware' => 'auth.jwt'], function () {
     Route::put('reviews/{id}', [ReviewController::class, 'update']);
     Route::delete('reviews/{id}', [ReviewController::class, 'destroy']);
     Route::post('book-ticket/{ticket}', [TicketController::class, 'bookTicket']);
+
+    Route::get('get_rides', [RideController::class, 'get_rides']);
 
     Route::get('coin-requests/{id}', [CoinRequestController::class, 'show']);
     Route::delete('coin-requests/{id}', [CoinRequestController::class, 'destroy']);
@@ -87,3 +95,4 @@ Route::group(['middleware' => 'auth.jwt'], function () {
 });
 
 Route::post('reset-password', [UserController::class, 'resetPassword']);
+

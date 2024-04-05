@@ -10,6 +10,10 @@ class Station extends Model
     use HasFactory;
     protected $fillable = ['station_name', 'station_location', 'service_status', 'station_img'];
     
+    public function rides()
+    {
+        return $this->hasMany(Ride::class);
+    }
      public function departures()
     {
         return $this->hasMany(Ticket::class, 'dep_station_id');
@@ -19,4 +23,5 @@ class Station extends Model
     {
         return $this->hasMany(Ticket::class, 'arr_station_id');
     }
+
 }

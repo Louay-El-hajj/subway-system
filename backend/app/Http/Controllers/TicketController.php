@@ -88,4 +88,41 @@ class TicketController extends Controller
             return response()->json(['error' => 'Insufficient coins'], 400);
         }
     }
+//ik there is 2 
+    public function purchaseTicket(Request $request, $ticketId)
+    {
+        $request->validate([
+            'token' => 'required|string', 
+        ]);
+
+        $user = User::where('api_token', $request->token)->first();
+
+        if (!$user) {
+            return response()->json(['error' => 'Unauthorized'], 401);
+        }
+
+        $ticket = Ticket::find($ticketId);
+
+        if (!$ticket) {
+            return response()->json(['error' => 'Ticket not found'], 404);
+        }
+
+        if ($ticket->ticket_status !== 'available') {
+            return response()->json(['error' => 'Ticket not available for purchase'], 400);
+        }
+
+
+        if ($user->coin_amount < $ticket->price) {
+            return response()->json(['error' => 'Insufficient funds'], 400);
+        }
+
+        $ticket->ticket_status = 'booked';
+        $ticket->user_id = $user->id;
+        $ticket->save();
+
+        $user->coin_amount -= $ticket->price;
+        $user->save();
+
+        return response()->json(['message' => 'Ticket purchased successfully'], 200);
+    }
 }

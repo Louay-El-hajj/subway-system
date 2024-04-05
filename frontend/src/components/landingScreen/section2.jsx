@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../../styles/landingScreen/section2.css";
-import { useNavigate } from "react-router-dom";
+import BookCard from "../bookCard";
+import { useNavigate } from 'react-router-dom';
 
 const Section2 = ({ from, to, price, rating }) => {
 
@@ -10,6 +11,7 @@ const Section2 = ({ from, to, price, rating }) => {
       <div className="section2-title">
         <h3>Hot Destinations</h3>
       </div>
+      <BookCard/>
 
     </div>
   );
