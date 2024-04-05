@@ -35,6 +35,8 @@ Route::post('login', [AuthController::class, 'login']);
 Route::get('stations', [StationController::class, 'index']);
 Route::get('stations/{id}', [StationController::class, 'show']);
 Route::get('tickets/{id}', [TicketController::class, 'show']);
+Route::get('tickets', [TicketController::class, 'index']);
+
 
 Route::group(['middleware' => 'auth.jwt'], function () {
 
@@ -44,13 +46,14 @@ Route::group(['middleware' => 'auth.jwt'], function () {
     Route::post('passes', [PassController::class, 'store']);
     Route::post('coin-requests', [CoinRequestController::class, 'store']);
     Route::post('reviews', [ReviewController::class, 'store']);
+    Route::post('tickets/{ticketId}/purchase', [TicketController::class, 'purchaseTicket']);
+
 
     Route::get('users', [UserController::class, 'index']);
     Route::get('users/{id}', [UserController::class, 'show']);
     Route::put('users/{id}', [UserController::class, 'update']);
     Route::delete('users/{id}', [UserController::class, 'destroy']);
 
-    Route::get('tickets', [TicketController::class, 'index']);
     Route::put('tickets/{id}', [TicketController::class, 'update']);
     Route::delete('tickets/{id}', [TicketController::class, 'destroy']);
     Route::get('tickets/{id}/history', [TicketController::class, 'getHistory']);
@@ -69,8 +72,7 @@ Route::group(['middleware' => 'auth.jwt'], function () {
     Route::group(['prefix' => 'branches'], function () {
         Route::get('stations/{id}', [StationController::class, 'show']);
         Route::put('stations/{id}', [StationController::class, 'update']);
-        Route::post('departures', [BranchController::class, 'storeDeparture']);
-        Route::post('arrivals', [BranchController::class, 'storeArrival']);
+
         Route::post('reviews', [BranchController::class, 'storeReview']);
         Route::get('chats', [BranchController::class, 'indexChat']);
         Route::post('chats', [BranchController::class, 'storeChat']);
@@ -81,7 +83,7 @@ Route::group(['middleware' => 'auth.jwt'], function () {
         Route::delete('branches/{id}', [HeadquartersController::class, 'removeBranch']);
         Route::put('branches/{id}', [HeadquartersController::class, 'updateBranch']);
         Route::get('coin-requests', [HeadquartersController::class, 'indexCoinRequests']);
-        Route::put('coin-requests/{id}', [CoinRequestController::class, 'handleCoinRequest']);
+        Route::put('coin-requests/{id}', [HeadquartersController::class, 'handleCoinRequest']);
     });
 
     Route::get('profile', [UserController::class, 'showProfile']);
