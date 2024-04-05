@@ -2,11 +2,12 @@ import React from "react";
 import { useNavigate } from 'react-router-dom';
 import "../styles/landingScreen/section1.css";
 
-const TopWallet = ({ isLoggedIn }) => {
+const TopWallet = () => {
   const navigate = useNavigate();
+const token = localStorage.getItem('token');
 
   const handleTopWalletClick = () => {
-    if (isLoggedIn) {
+    if (token) {
       navigate("/profile");
     } else {
       navigate("/login");
