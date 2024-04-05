@@ -21,7 +21,7 @@
 }
 
 button {
-  background-color: #4caf50;
+  background-color: #ff4d4d;
   color: white;
   padding: 10px 20px;
   border: none;
@@ -31,7 +31,7 @@ button {
 }
 
 button:hover {
-  background-color: #45a049;
+  background-color: #d85d5d;
 }
 
 .user-details {

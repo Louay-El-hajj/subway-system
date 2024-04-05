@@ -75,9 +75,9 @@ const AuthForm = () => {
             required
           />
         </div>
-        <button type="submit">{isLogin ? "Login" : "Sign Up"}</button>
+        <button className="button1" type="submit">{isLogin ? "Login" : "Sign Up"}</button>
       </form>
-      <button onClick={toggleForm}>
+      <button  onClick={toggleForm}>
         {isLogin
           ? "Need an account? Sign up"
           : "Already have an account? Login"}

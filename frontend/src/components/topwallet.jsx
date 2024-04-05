@@ -9,7 +9,7 @@ const TopWallet = ({ isLoggedIn }) => {
     if (isLoggedIn) {
       navigate("/profile");
     } else {
-      navigate("/login");
+      navigate("/aa");
     }
   };
 
